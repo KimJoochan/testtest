@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>텍스트 읽기 예제</title>
+</head>
+
+<body>
+    <textarea id="text" rows="4" cols="50">안녕하세요, 이것은 웹에서 소리 내어 읽어주는 예제입니다.</textarea><br>
+    <button onclick="speak()">읽기</button>
+    <button onclick="stop()">정지</button>
+
+    <script>
+        function speak() {
+            const text = document.getElementById("text").value;
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.lang = "ko-KR"; // 한국어 음성
+            utter.rate = 1; // 속도 (0.1 ~ 10)
+            utter.pitch = 1; // 높낮이 (0 ~ 2)
+            speechSynthesis.speak(utter);
+        }
+
+        function stop() {
+            speechSynthesis.cancel();
+        }
+
+    </script>
+</body>
+
+</html>
